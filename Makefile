@@ -1,7 +1,13 @@
 setup:
-	docker run -it -w /root -v `pwd`/app:/root node:14.18.1 npm ci
+	docker-compose build
 
 start:
-	docker run -it -w /root -v `pwd`/app:/root -p 8080:8080 node:14.18.1 npm run dev
+	docker-compose up -d
+
+stop:
+	docker-compose down
+
+test:
+	docker-compose -f docker-compose.yml up --abort-on-container-exit --exit-code-from app
 
 magic: setup start

@@ -1,0 +1,11 @@
+version: "2"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: npm test
+    ports: 
+      - "8000:3000"
+    volumes:
+      - "./app:/app"
