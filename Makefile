@@ -1,5 +1,5 @@
-setup:
-	docker-compose build
+build:
+	docker-compose -f docker-compose.yml build app
 
 start:
 	docker-compose up -d
@@ -10,4 +10,11 @@ stop:
 test:
 	docker-compose -f docker-compose.yml up --abort-on-container-exit --exit-code-from app
 
-magic: setup start
+magic: build start
+
+# Docker hub
+
+push-to-hub:
+	docker-compose -f docker-compose.yml push app
+
+ci: test push-to-hub

@@ -3,7 +3,8 @@ services:
   app:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.production
+    image: "pochka15/devops-for-programmers-project-74"
     command: npm test
     ports: 
       - "8000:3000"
