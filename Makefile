@@ -1,20 +1,18 @@
-build:
+compose-build:
 	docker-compose -f docker-compose.yml build app
 
-start:
+compose-up:
 	docker-compose up -d
 
-stop:
+compose-down:
 	docker-compose down
 
-test:
+compose-test:
 	docker-compose -f docker-compose.yml up --abort-on-container-exit --exit-code-from app
 
-magic: build start
-
-# Docker hub
+compose-ci: compose-build compose-test
 
 push-to-hub:
 	docker-compose -f docker-compose.yml push app
 
-ci: test push-to-hub
+magic: build start
