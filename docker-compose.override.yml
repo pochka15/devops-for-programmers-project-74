@@ -1,16 +1,6 @@
 services:
-  db:
-    image: postgres
-    restart: always
-    environment:
-      DATABASE_NAME: postgres
-      DATABASE_USERNAME: postgres
-      POSTGRES_PASSWORD: password
-
   app:
     command: bash -c 'sleep 3 && npm start'
-    depends_on:
-      - "db"
     volumes:
       - "./app:/app"
 
