@@ -10,6 +10,9 @@ compose-up:
 compose-down:
 	docker-compose down
 
+compose-logs:
+	docker-compose logs -f
+
 compose-ci: compose-build compose-test
 
 push-to-hub:
