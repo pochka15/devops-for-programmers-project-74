@@ -14,6 +14,6 @@ services:
       context: .
       dockerfile: Dockerfile.production
     image: "pochka15/devops-for-programmers-project-74"
-    command: npm test
+    command: bash -c 'sleep 3 && npm test'
     ports: 
       - "8000:3000"
