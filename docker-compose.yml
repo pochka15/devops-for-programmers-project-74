@@ -9,6 +9,11 @@ services:
   app:
     depends_on:
       - "db"
+    environment:
+      - DATABASE_HOST=db
+      - DATABASE_NAME=postgres
+      - DATABASE_USERNAME=postgres
+      - DATABASE_PASSWORD=password
     build:
       context: .
       dockerfile: Dockerfile.production
