@@ -1,8 +1,7 @@
-compose-build:
-	docker-compose -f docker-compose.yml build app
+# Docker compose
 
-compose-test:
-	docker-compose -f docker-compose.yml up --abort-on-container-exit
+compose-build:
+	docker-compose build app
 
 compose-up:
 	docker-compose up -d
@@ -13,9 +12,18 @@ compose-down:
 compose-logs:
 	docker-compose logs -f
 
-compose-ci: compose-build compose-test
-
 push-to-hub:
 	docker-compose -f docker-compose.yml push app
 
-magic: compose-build compose-up
+# Local development
+
+prepare-env:
+	cp -n .env.example .env || true
+
+magic: prepare-env compose-build compose-up
+
+# CI
+
+ci: prepare-env
+	docker-compose -f docker-compose.yml build app
+	docker-compose -f docker-compose.yml up --abort-on-container-exit

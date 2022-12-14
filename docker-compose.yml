@@ -3,8 +3,8 @@ services:
   db:
     image: postgres
     environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB
+      - POSTGRES_PASSWORD
 
   app:
     depends_on:
@@ -13,6 +13,11 @@ services:
       context: .
       dockerfile: Dockerfile.production
     image: "pochka15/devops-for-programmers-project-74"
-    command: bash -c 'sleep 3 && make prepare-env && npm test'
-    ports: 
-      - "8000:3000"
+    command: bash -c "sleep 3 && npm test"
+    environment:
+      - DATABASE_NAME
+      - DATABASE_USERNAME
+      - DATABASE_PASSWORD
+      - DATABASE_PORT
+      - DATABASE_HOST=db
+
