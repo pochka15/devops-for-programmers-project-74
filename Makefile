@@ -16,14 +16,13 @@ push-to-hub:
 	docker-compose -f docker-compose.yml push app
 
 # Local development
-
 prepare-env:
-	cp -n .env.example .env || true
+	cp -n .env.example .env
 
-magic: prepare-env compose-build compose-up
+magic: compose-build compose-up
 
 # CI
 
-ci: prepare-env
+ci:
 	docker-compose -f docker-compose.yml build app
 	docker-compose -f docker-compose.yml up --abort-on-container-exit
