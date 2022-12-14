@@ -3,8 +3,8 @@ services:
   db:
     image: postgres
     environment:
-      - POSTGRES_DB
-      - POSTGRES_PASSWORD
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=password
 
   app:
     depends_on:
@@ -15,9 +15,9 @@ services:
     image: "pochka15/devops-for-programmers-project-74"
     command: bash -c "sleep 3 && npm test"
     environment:
-      - DATABASE_NAME
-      - DATABASE_USERNAME
-      - DATABASE_PASSWORD
-      - DATABASE_PORT
+      - DATABASE_NAME=postgres
+      - DATABASE_USERNAME=postgres
+      - DATABASE_PASSWORD=password
+      - DATABASE_PORT=5432
       - DATABASE_HOST=db
 
