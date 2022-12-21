@@ -1,14 +1,15 @@
-version: "3"
+version: "4"
 services:
-  db:
-    image: postgres
+  postgres:
+    image: postgres:13-alpine
     environment:
       - POSTGRES_DB
       - POSTGRES_PASSWORD
+      - POSTGRES_HOST_AUTH_METHOD=trust
 
   app:
     depends_on:
-      - "db"
+      - postgres
     build:
       context: .
       dockerfile: Dockerfile.production
@@ -20,4 +21,3 @@ services:
       - DATABASE_PASSWORD
       - DATABASE_PORT
       - DATABASE_HOST
-
