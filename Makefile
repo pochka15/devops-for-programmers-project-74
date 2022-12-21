@@ -23,6 +23,6 @@ magic: compose-build compose-up
 
 # CI
 
-ci:
+ci: prepare-env
 	docker-compose -f docker-compose.yml build app
 	docker-compose -f docker-compose.yml up --abort-on-container-exit
