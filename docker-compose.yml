@@ -19,5 +19,5 @@ services:
       - DATABASE_USERNAME
       - DATABASE_PASSWORD
       - DATABASE_PORT
-      - DATABASE_HOST=db
+      - DATABASE_HOST
 
